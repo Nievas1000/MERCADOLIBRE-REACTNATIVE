@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Login } from './pages/Login';
 import { Routes, Route } from 'react-router-native';
 import { Registry } from './pages/Registry';
+import { Validation } from './pages/Validation';
 
 export const Main: React.FC = () => {
 	return (
@@ -11,6 +12,7 @@ export const Main: React.FC = () => {
 			<Routes>
 				<Route path='/' element={<Login />} />
 				<Route path='/registry' element={<Registry />} />
+				<Route path='/validation' element={<Validation />} />
 			</Routes>
 		</View>
 	);
@@ -19,6 +21,5 @@ export const Main: React.FC = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'center',
 	},
 });
