@@ -5,8 +5,8 @@ import { RegistryContext } from '../context/registry';
 import { RegistryCardButton } from './RegistryCardButton';
 
 export const RegistryCards: React.FC = () => {
-	const { email, username } = useContext(RegistryContext);
-	console.log(email);
+	const { email, username, password } = useContext(RegistryContext);
+	console.log(email, username, password);
 	return (
 		<View style={{ padding: 15 }}>
 			<View style={[styles.container, { elevation: email === '' ? 8 : 0 }]}>
@@ -20,7 +20,12 @@ export const RegistryCards: React.FC = () => {
 				{email === '' && <RegistryCardButton type='email' />}
 			</View>
 
-			<View style={[styles.container, { elevation: email !== '' ? 8 : 0 }]}>
+			<View
+				style={[
+					styles.container,
+					{ elevation: email !== '' && username === '' ? 8 : 0 },
+				]}
+			>
 				<AntDesign name='idcard' size={24} color='#3483fa' />
 				<View style={{ flex: 1, paddingLeft: 15 }}>
 					<Text style={{ fontSize: 16 }}>Choose your name</Text>
@@ -28,7 +33,9 @@ export const RegistryCards: React.FC = () => {
 						Tell us how you want to be contact
 					</Text>
 				</View>
-				{email !== '' && <RegistryCardButton type='username' />}
+				{email !== '' && username === '' && (
+					<RegistryCardButton type='username' />
+				)}
 			</View>
 
 			<View
