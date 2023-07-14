@@ -1,49 +1,20 @@
-import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useNavigate } from 'react-router-native';
+import { StyleSheet, View } from 'react-native';
+import { EmailLogin } from '../components/login/EmailLogin';
+import { useLocation } from 'react-router-native';
+import { PasswordLogin } from '../components/login/PasswordLogin';
 
 export const Login: React.FC = () => {
-	const [username, setUsername] = useState('');
-	const navigate = useNavigate();
-	console.log(username);
+	const location = useLocation();
+	const searchParams = new URLSearchParams(location.search);
+	const queryValue = searchParams.get('type');
+	console.log(queryValue);
 	return (
 		<View style={styles.container}>
-			<View>
-				<View>
-					<Text style={styles.title}>Enter your phone, e-mail or username</Text>
-				</View>
-				<View style={{ paddingVertical: 40 }}>
-					<Text style={{ paddingBottom: 5 }}>
-						Telephone, e-mail or username
-					</Text>
-					<TextInput
-						value={username}
-						onChangeText={setUsername}
-						style={styles.input}
-					/>
-				</View>
-				<Button
-					onPress={() => {
-						navigate('/registry');
-					}}
-					disabled={username === ''}
-					title='Continue'
-				/>
-				<View
-					style={{
-						alignItems: 'center',
-					}}
-				>
-					<Text
-						onPress={() => {
-							navigate('/registry');
-						}}
-						style={{ color: '#3483fa', paddingTop: 20, fontSize: 15 }}
-					>
-						Create Account
-					</Text>
-				</View>
-			</View>
+			{queryValue === 'password' ? (
+				<PasswordLogin styles={styles} />
+			) : (
+				<EmailLogin styles={styles} />
+			)}
 		</View>
 	);
 };

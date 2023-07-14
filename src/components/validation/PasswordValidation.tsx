@@ -12,14 +12,13 @@ export const PasswordValidation: React.FC<ValidationProps> = ({ styles }) => {
 	/* const navigate = useNavigate(); */
 
 	const registryUser = async (): Promise<void> => {
-		console.log(password, username, email);
 		try {
-			const response = await axios.post('http://localhost:3001/registry', {
+			const response = await axios.post('http://10.0.2.2:3001/registry', {
 				email,
 				username,
 				password,
 			});
-			console.log(response.data);
+			console.log(response.status);
 		} catch (error) {
 			console.log(error);
 		}

@@ -13,6 +13,7 @@ export const Main: React.FC = () => {
 				<Route path='/' element={<Login />} />
 				<Route path='/registry' element={<Registry />} />
 				<Route path='/validation' element={<Validation />} />
+				<Route path='/login' element={<Login />} />
 			</Routes>
 		</View>
 	);
