@@ -1,12 +1,12 @@
 import { Button, Text, TextInput, View } from 'react-native';
 import Constants from 'expo-constants';
 import { useContext } from 'react';
-import { RegistryContext } from '../../context/registry';
+import { UserContext } from '../../context/user';
 import { useNavigate } from 'react-router-native';
 import type { ValidationProps } from '../../types';
 
 export const UsernameValidation: React.FC<ValidationProps> = ({ styles }) => {
-	const { username, setUsername } = useContext(RegistryContext);
+	const { username, setUsername } = useContext(UserContext);
 	const navigate = useNavigate();
 
 	return (

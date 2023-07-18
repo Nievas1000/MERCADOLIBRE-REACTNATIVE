@@ -4,6 +4,7 @@ import { Login } from './pages/Login';
 import { Routes, Route } from 'react-router-native';
 import { Registry } from './pages/Registry';
 import { Validation } from './pages/Validation';
+import { Home } from './pages/Home';
 
 export const Main: React.FC = () => {
 	return (
@@ -14,6 +15,7 @@ export const Main: React.FC = () => {
 				<Route path='/registry' element={<Registry />} />
 				<Route path='/validation' element={<Validation />} />
 				<Route path='/login' element={<Login />} />
+				<Route path='/home' element={<Home />} />
 			</Routes>
 		</View>
 	);

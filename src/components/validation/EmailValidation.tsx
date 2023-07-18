@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
-import { RegistryContext } from '../../context/registry';
+import { UserContext } from '../../context/user';
 import { useNavigate } from 'react-router-native';
 import Constants from 'expo-constants';
 import type { ValidationProps } from '../../types';
 
 export const EmailValidation: React.FC<ValidationProps> = ({ styles }) => {
-	const { email, setEmail } = useContext(RegistryContext);
+	const { email, setEmail } = useContext(UserContext);
 	const navigate = useNavigate();
 	return (
 		<View

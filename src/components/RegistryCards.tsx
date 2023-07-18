@@ -1,12 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { useContext } from 'react';
-import { RegistryContext } from '../context/registry';
+import { UserContext } from '../context/user';
 import { RegistryCardButton } from './RegistryCardButton';
 
 export const RegistryCards: React.FC = () => {
-	const { email, username, password } = useContext(RegistryContext);
-	console.log(email, username, password);
+	const { email, username } = useContext(UserContext);
 	return (
 		<View style={{ padding: 15 }}>
 			<View style={[styles.container, { elevation: email === '' ? 8 : 0 }]}>

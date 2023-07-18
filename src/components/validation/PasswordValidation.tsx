@@ -2,13 +2,12 @@ import { Button, Text, TextInput, View } from 'react-native';
 import type { ValidationProps } from '../../types';
 /* import { useNavigate } from 'react-router-native'; */
 import { useContext } from 'react';
-import { RegistryContext } from '../../context/registry';
+import { UserContext } from '../../context/user';
 import Constants from 'expo-constants';
 import axios from 'axios';
 
 export const PasswordValidation: React.FC<ValidationProps> = ({ styles }) => {
-	const { password, username, email, setPassword } =
-		useContext(RegistryContext);
+	const { password, username, email, setPassword } = useContext(UserContext);
 	/* const navigate = useNavigate(); */
 
 	const registryUser = async (): Promise<void> => {

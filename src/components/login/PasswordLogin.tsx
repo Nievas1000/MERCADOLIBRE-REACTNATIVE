@@ -1,13 +1,21 @@
 import { Button, Text, TextInput, View } from 'react-native';
 import type { ValidationProps } from '../../types';
 import { useNavigate } from 'react-router-native';
-import { useContext } from 'react';
-import { RegistryContext } from '../../context/registry';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../context/user';
 import { Feather } from '@expo/vector-icons';
 import axios from 'axios';
 
 export const PasswordLogin: React.FC<ValidationProps> = ({ styles }) => {
-	const { password, username, setPassword } = useContext(RegistryContext);
+	const [error, setError] = useState('');
+	const {
+		password,
+		username,
+		setPassword,
+		setUsername,
+		setIsLogged,
+		setEmail,
+	} = useContext(UserContext);
 	const navigate = useNavigate();
 
 	const login = async (): Promise<void> => {
@@ -18,11 +26,24 @@ export const PasswordLogin: React.FC<ValidationProps> = ({ styles }) => {
 					password,
 				},
 			});
-			console.log(response.data);
+			if (
+				response.status === 200 &&
+				response.data.username !== null &&
+				response.data.email !== null
+			) {
+				setUsername(response.data.username);
+				setEmail(response.data.email);
+				setIsLogged(true);
+				navigate('/home');
+			} else {
+				setError('There is no user with that username or email.');
+			}
 		} catch (error) {
 			console.log(error);
+			setError('There is no user with that username or email.');
 		}
 	};
+
 	return (
 		<View>
 			<View>
@@ -61,6 +82,9 @@ export const PasswordLogin: React.FC<ValidationProps> = ({ styles }) => {
 					style={styles.input}
 				/>
 			</View>
+			{error !== '' && (
+				<Text style={{ color: 'red', paddingBottom: 10 }}>{error}</Text>
+			)}
 			<Button
 				onPress={() => {
 					void login();

@@ -1,14 +1,14 @@
 import { NativeRouter } from 'react-router-native';
 import { Main } from './src/Main';
-import { RegistryProvider } from './src/context/registry';
+import { UserProvider } from './src/context/user';
 
 const App: React.FC = () => {
 	return (
-		<RegistryProvider>
+		<UserProvider>
 			<NativeRouter>
 				<Main />
 			</NativeRouter>
-		</RegistryProvider>
+		</UserProvider>
 	);
 };
 

@@ -7,7 +7,6 @@ export const Login: React.FC = () => {
 	const location = useLocation();
 	const searchParams = new URLSearchParams(location.search);
 	const queryValue = searchParams.get('type');
-	console.log(queryValue);
 	return (
 		<View style={styles.container}>
 			{queryValue === 'password' ? (
