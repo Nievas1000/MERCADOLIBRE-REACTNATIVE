@@ -1,10 +1,18 @@
-import { StyleSheet, TextInput, View } from 'react-native';
+import { StyleSheet, TextInput, View, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 
 export const NavBar: React.FC = () => {
+	const navigation = useNavigation();
+
+	const handleMenuPress = (): void => {
+		navigation.dispatch(DrawerActions.openDrawer());
+	};
 	return (
 		<View style={styles.container}>
-			<Feather name='menu' size={24} color='black' />
+			<TouchableOpacity onPress={handleMenuPress}>
+				<Feather name='menu' size={24} color='black' />
+			</TouchableOpacity>
 			<TextInput
 				style={styles.input}
 				placeholder='Search in Mercado Libre'

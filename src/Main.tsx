@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import { Login } from './pages/Login';
+import { Login } from './screens/Login';
 import { Routes, Route } from 'react-router-native';
-import { Registry } from './pages/Registry';
-import { Validation } from './pages/Validation';
-import { Home } from './pages/Home';
+import { Registry } from './screens/Registry';
+import { Validation } from './screens/Validation';
+import { Home } from './screens/Home';
 
 export const Main: React.FC = () => {
 	return (
