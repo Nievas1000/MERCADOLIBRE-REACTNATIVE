@@ -1,13 +1,16 @@
 import { StyleSheet, TextInput, View, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { DrawerActions, type NavigationProp } from '@react-navigation/native';
 
-export const NavBar: React.FC = () => {
-	const navigation = useNavigation();
+interface Props {
+	navigation?: NavigationProp<any>;
+}
 
+export const NavBar: React.FC<Props> = ({ navigation }) => {
 	const handleMenuPress = (): void => {
-		navigation.dispatch(DrawerActions.openDrawer());
+		navigation?.dispatch(DrawerActions.openDrawer());
 	};
+
 	return (
 		<View style={styles.container}>
 			<TouchableOpacity onPress={handleMenuPress}>

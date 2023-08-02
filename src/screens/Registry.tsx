@@ -1,18 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { useNavigate } from 'react-router-native';
 import { AntDesign } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import { RegistryCards } from '../components/RegistryCards';
+import type { StackScreenProps } from '@react-navigation/stack';
+import type { RootStackParamList } from '../Main';
 
-export const Registry: React.FC = () => {
-	const navigate = useNavigate();
+type Props = StackScreenProps<RootStackParamList, 'Registry'>;
+
+export const Registry: React.FC<Props> = ({ navigation }) => {
 	return (
 		<View style={{ marginTop: Constants.statusBarHeight }}>
 			<View style={{ padding: 20 }}>
 				<View style={{ paddingBottom: 50 }}>
 					<AntDesign
 						onPress={() => {
-							navigate('/');
+							navigation?.navigate('Login', { type: 'email' });
 						}}
 						name='arrowleft'
 						size={34}

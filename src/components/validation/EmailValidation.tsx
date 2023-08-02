@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import { UserContext } from '../../context/user';
-import { useNavigate } from 'react-router-native';
 import Constants from 'expo-constants';
 import type { ValidationProps } from '../../types';
 
-export const EmailValidation: React.FC<ValidationProps> = ({ styles }) => {
+export const EmailValidation: React.FC<ValidationProps> = ({
+	styles,
+	navigation,
+}) => {
 	const { email, setEmail } = useContext(UserContext);
-	const navigate = useNavigate();
 	return (
 		<View
 			style={{
@@ -26,7 +27,7 @@ export const EmailValidation: React.FC<ValidationProps> = ({ styles }) => {
 					disabled={email === ''}
 					title='Continue'
 					onPress={() => {
-						navigate('/registry');
+						navigation?.navigate('Registry');
 					}}
 				/>
 			</View>

@@ -1,18 +1,19 @@
 import { StyleSheet, View } from 'react-native';
 import { EmailLogin } from '../components/login/EmailLogin';
-import { useLocation } from 'react-router-native';
+import type { StackScreenProps } from '@react-navigation/stack';
 import { PasswordLogin } from '../components/login/PasswordLogin';
+import type { RootStackParamList } from '../Main';
 
-export const Login: React.FC = () => {
-	const location = useLocation();
-	const searchParams = new URLSearchParams(location.search);
-	const queryValue = searchParams.get('type');
+type Props = StackScreenProps<RootStackParamList, 'Login'>;
+
+export const Login: React.FC<Props> = ({ route, navigation }) => {
+	const { type } = route.params ?? {};
 	return (
 		<View style={styles.container}>
-			{queryValue === 'password' ? (
-				<PasswordLogin styles={styles} />
+			{type === 'password' ? ( // pasar navigation como parametro
+				<PasswordLogin styles={styles} navigation={navigation} />
 			) : (
-				<EmailLogin styles={styles} />
+				<EmailLogin styles={styles} navigation={navigation} />
 			)}
 		</View>
 	);

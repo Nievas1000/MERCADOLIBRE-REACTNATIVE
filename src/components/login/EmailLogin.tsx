@@ -1,12 +1,13 @@
 import { Button, Text, TextInput, View } from 'react-native';
-import { useNavigate } from 'react-router-native';
 import { useContext } from 'react';
 import type { ValidationProps } from '../../types';
 import { UserContext } from '../../context/user';
 
-export const EmailLogin: React.FC<ValidationProps> = ({ styles }) => {
+export const EmailLogin: React.FC<ValidationProps> = ({
+	styles,
+	navigation,
+}) => {
 	const { username, setUsername } = useContext(UserContext);
-	const navigate = useNavigate();
 	return (
 		<View>
 			<View>
@@ -21,9 +22,7 @@ export const EmailLogin: React.FC<ValidationProps> = ({ styles }) => {
 				/>
 			</View>
 			<Button
-				onPress={() => {
-					navigate('/login?type=password');
-				}}
+				onPress={() => navigation?.navigate('Login', { type: 'password' })}
 				disabled={username === ''}
 				title='Continue'
 			/>
@@ -33,9 +32,7 @@ export const EmailLogin: React.FC<ValidationProps> = ({ styles }) => {
 				}}
 			>
 				<Text
-					onPress={() => {
-						navigate('/registry');
-					}}
+					onPress={() => navigation?.navigate('Registry')}
 					style={{ color: '#3483fa', paddingTop: 20, fontSize: 15 }}
 				>
 					Create Account

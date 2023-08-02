@@ -2,12 +2,13 @@ import { Button, Text, TextInput, View } from 'react-native';
 import Constants from 'expo-constants';
 import { useContext } from 'react';
 import { UserContext } from '../../context/user';
-import { useNavigate } from 'react-router-native';
 import type { ValidationProps } from '../../types';
 
-export const UsernameValidation: React.FC<ValidationProps> = ({ styles }) => {
+export const UsernameValidation: React.FC<ValidationProps> = ({
+	styles,
+	navigation,
+}) => {
 	const { username, setUsername } = useContext(UserContext);
-	const navigate = useNavigate();
 
 	return (
 		<View
@@ -32,7 +33,7 @@ export const UsernameValidation: React.FC<ValidationProps> = ({ styles }) => {
 					disabled={username === ''}
 					title='Continue'
 					onPress={() => {
-						navigate('/registry');
+						navigation?.navigate('Registry');
 					}}
 				/>
 			</View>

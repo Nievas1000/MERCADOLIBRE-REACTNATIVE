@@ -1,3 +1,4 @@
+import type { NavigationProp } from "@react-navigation/native";
 import type { TextStyle, ViewStyle } from "react-native";
 
 export interface UserContextType {
@@ -16,4 +17,5 @@ export interface ValidationProps {
 		title: TextStyle;
 		input: ViewStyle;
 	};
+	navigation?: NavigationProp<any>;
 }

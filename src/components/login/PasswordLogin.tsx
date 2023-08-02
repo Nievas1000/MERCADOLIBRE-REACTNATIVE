@@ -1,12 +1,14 @@
 import { Button, Text, TextInput, View } from 'react-native';
 import type { ValidationProps } from '../../types';
-import { useNavigate } from 'react-router-native';
 import { useContext, useState } from 'react';
 import { UserContext } from '../../context/user';
 import { Feather } from '@expo/vector-icons';
 import axios from 'axios';
 
-export const PasswordLogin: React.FC<ValidationProps> = ({ styles }) => {
+export const PasswordLogin: React.FC<ValidationProps> = ({
+	styles,
+	navigation,
+}) => {
 	const [error, setError] = useState('');
 	const {
 		password,
@@ -16,7 +18,6 @@ export const PasswordLogin: React.FC<ValidationProps> = ({ styles }) => {
 		setIsLogged,
 		setEmail,
 	} = useContext(UserContext);
-	const navigate = useNavigate();
 
 	const login = async (): Promise<void> => {
 		try {
@@ -34,7 +35,7 @@ export const PasswordLogin: React.FC<ValidationProps> = ({ styles }) => {
 				setUsername(response.data.username);
 				setEmail(response.data.email);
 				setIsLogged(true);
-				navigate('/home');
+				navigation?.navigate('Home');
 			} else {
 				setError('There is no user with that username or email.');
 			}
@@ -66,7 +67,7 @@ export const PasswordLogin: React.FC<ValidationProps> = ({ styles }) => {
 					<Text
 						style={{ color: '#3483fa', fontSize: 12 }}
 						onPress={() => {
-							navigate('/');
+							navigation?.navigate('Login');
 						}}
 					>
 						Change account
