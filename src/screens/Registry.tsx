@@ -3,7 +3,7 @@ import { AntDesign } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import { RegistryCards } from '../components/RegistryCards';
 import type { StackScreenProps } from '@react-navigation/stack';
-import type { RootStackParamList } from '../Main';
+import type { RootStackParamList } from '../types';
 
 type Props = StackScreenProps<RootStackParamList, 'Registry'>;
 
@@ -25,7 +25,7 @@ export const Registry: React.FC<Props> = ({ navigation }) => {
 					Fill in the details to create your account
 				</Text>
 			</View>
-			<RegistryCards />
+			<RegistryCards navigation={navigation} />
 		</View>
 	);
 };

@@ -5,7 +5,10 @@ import { UserContext } from '../../context/user';
 import Constants from 'expo-constants';
 import axios from 'axios';
 
-export const PasswordValidation: React.FC<ValidationProps> = ({ styles }) => {
+export const PasswordValidation: React.FC<ValidationProps> = ({
+	styles,
+	navigation,
+}) => {
 	const { password, username, email, setPassword } = useContext(UserContext);
 
 	const registryUser = async (): Promise<void> => {
@@ -15,7 +18,9 @@ export const PasswordValidation: React.FC<ValidationProps> = ({ styles }) => {
 				username,
 				password,
 			});
-			console.log(response.status);
+			if (response.status === 200) {
+				navigation?.navigate('Home');
+			}
 		} catch (error) {
 			console.log(error);
 		}

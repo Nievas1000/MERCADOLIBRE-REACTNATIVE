@@ -2,8 +2,8 @@ import { View } from 'react-native';
 import Constants from 'expo-constants';
 import { NavBar } from '../components/Navbar';
 import { CarouselPublis } from '../components/CarouselPublis';
-import type { RootStackParamList } from '../Main';
 import type { StackNavigationProp } from '@react-navigation/stack';
+import type { RootStackParamList } from '../types';
 
 type HomeNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 

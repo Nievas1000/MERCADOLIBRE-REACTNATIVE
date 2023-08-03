@@ -3,32 +3,8 @@ import { StyleSheet, View } from 'react-native';
 import { Login } from './screens/Login';
 import { Registry } from './screens/Registry';
 import { Validation } from './screens/Validation';
-import { Home } from './screens/Home';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Settings } from './screens/Settings';
-import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-
-// eslint-disable-next-line
-export type RootStackParamList = {
-	Login: { type?: 'password' | 'email' };
-	Registry: undefined;
-	Validation: undefined;
-	Home: undefined;
-	Settings: undefined;
-};
-
-const Drawer = createDrawerNavigator();
-const Stack = createStackNavigator<RootStackParamList>();
-
-const DrawerNavigator: React.FC = () => {
-	return (
-		<Drawer.Navigator screenOptions={{ headerShown: false }}>
-			<Drawer.Screen name='Home' component={Home} />
-			<Drawer.Screen name='Settings' component={Settings} />
-		</Drawer.Navigator>
-	);
-};
+import { DrawerNavigator, Stack } from './Navigator';
 
 export const Main: React.FC = () => {
 	return (

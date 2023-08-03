@@ -1,23 +1,24 @@
 import { StyleSheet } from 'react-native';
-import { useLocation } from 'react-router-native';
 import { EmailValidation } from '../components/validation/EmailValidation';
 import { UsernameValidation } from '../components/validation/UsernameValidation';
 import { PasswordValidation } from '../components/validation/PasswordValidation';
+import type { StackScreenProps } from '@react-navigation/stack';
+import type { RootStackParamList } from '../types';
 
-export const Validation: React.FC = () => {
-	const location = useLocation();
-	const searchParams = new URLSearchParams(location.search);
-	const queryValue = searchParams.get('type');
-	if (queryValue === 'email') {
-		return <EmailValidation styles={styles} />;
+type Props = StackScreenProps<RootStackParamList, 'Validation'>;
+
+export const Validation: React.FC<Props> = ({ route, navigation }) => {
+	const { type } = route.params ?? {};
+	if (type === 'email') {
+		return <EmailValidation styles={styles} navigation={navigation} />;
 	}
 
-	if (queryValue === 'username') {
-		return <UsernameValidation styles={styles} />;
+	if (type === 'username') {
+		return <UsernameValidation styles={styles} navigation={navigation} />;
 	}
 
-	if (queryValue === 'password') {
-		return <PasswordValidation styles={styles} />;
+	if (type === 'password') {
+		return <PasswordValidation styles={styles} navigation={navigation} />;
 	}
 
 	return null;

@@ -3,8 +3,13 @@ import { AntDesign } from '@expo/vector-icons';
 import { useContext } from 'react';
 import { UserContext } from '../context/user';
 import { RegistryCardButton } from './RegistryCardButton';
+import type { NavigationProp } from '@react-navigation/native';
 
-export const RegistryCards: React.FC = () => {
+interface Props {
+	navigation: NavigationProp<any>;
+}
+
+export const RegistryCards: React.FC<Props> = ({ navigation }) => {
 	const { email, username } = useContext(UserContext);
 	return (
 		<View style={{ padding: 15 }}>
@@ -16,7 +21,9 @@ export const RegistryCards: React.FC = () => {
 						You will receive information about your account
 					</Text>
 				</View>
-				{email === '' && <RegistryCardButton type='email' />}
+				{email === '' && (
+					<RegistryCardButton type='email' navigation={navigation} />
+				)}
 			</View>
 
 			<View
@@ -33,7 +40,7 @@ export const RegistryCards: React.FC = () => {
 					</Text>
 				</View>
 				{email !== '' && username === '' && (
-					<RegistryCardButton type='username' />
+					<RegistryCardButton type='username' navigation={navigation} />
 				)}
 			</View>
 
@@ -51,7 +58,7 @@ export const RegistryCards: React.FC = () => {
 					</Text>
 				</View>
 				{email !== '' && username !== '' && (
-					<RegistryCardButton type='password' />
+					<RegistryCardButton type='password' navigation={navigation} />
 				)}
 			</View>
 		</View>

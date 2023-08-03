@@ -19,3 +19,12 @@ export interface ValidationProps {
 	};
 	navigation?: NavigationProp<any>;
 }
+
+// eslint-disable-next-line
+export type RootStackParamList = {
+	Login: { type?: 'password' | 'email' };
+	Registry: undefined;
+	Validation: { type: 'password' | 'email' | 'username' };
+	Home: undefined;
+	Settings: undefined;
+};
